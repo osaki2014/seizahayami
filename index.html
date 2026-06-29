@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#07111e" />
   <title>宙めぐり｜星座早見盤</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="dial.css" />
 </head>
 <body>
   <header class="topbar">
@@ -42,7 +43,19 @@
         <button class="text-button" id="toggleAll">すべて選択 / 解除</button>
 
         <div class="divider"></div>
-        <div class="panel-title compact"><span>03</span><h2>星座</h2></div>
+        <div class="panel-title compact"><span>03</span><h2>星図の表示</h2></div>
+        <div id="layerFilters" class="layer-grid">
+          <label><input type="checkbox" data-layer="lines" checked><span>星座線</span></label>
+          <label><input type="checkbox" data-layer="starNames" checked><span>星の名前</span></label>
+          <label><input type="checkbox" data-layer="constellationNames" checked><span>星座名</span></label>
+          <label><input type="checkbox" data-layer="ecliptic" checked><span>黄道</span></label>
+          <label><input type="checkbox" data-layer="equator" checked><span>赤道</span></label>
+          <label><input type="checkbox" data-layer="meridian" checked><span>子午線</span></label>
+          <label><input type="checkbox" data-layer="milkyway" checked><span>天の川</span></label>
+        </div>
+
+        <div class="divider"></div>
+        <div class="panel-title compact"><span>04</span><h2>星座</h2></div>
         <p class="helper">小学校の理科で扱う代表的な星座</p>
         <div id="constellationFilters" class="chips"></div>
       </aside>
@@ -53,11 +66,11 @@
           <div class="legend"><span><i class="star-dot"></i>恒星</span><span><i class="line-dot"></i>星座線</span></div>
         </div>
         <div class="chart-wrap">
-          <svg id="skyChart" viewBox="0 0 800 800" aria-label="現在の星空"></svg>
+          <svg id="skyChart" viewBox="0 0 800 800" aria-label="マウスで回せる星座早見盤"></svg>
           <div class="direction north">北</div><div class="direction east">東</div><div class="direction south">南</div><div class="direction west">西</div>
           <div class="chart-center"><span>天頂</span></div>
         </div>
-        <div class="viewer-note"><span>◉</span><p><b>空にかざす向き</b><br>見たい方角を下にして、頭上にかざしてください。</p></div>
+        <div class="viewer-note"><span>↻</span><p><b>回転板をマウスで回せます</b><br>盤面を左右にドラッグして月日と時刻を合わせます。見たい方角を下にして空にかざしてください。</p></div>
       </section>
     </section>
 
