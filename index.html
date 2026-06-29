@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07111e" />
+  <title>宙めぐり｜星座早見盤</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">✦</span><span>宙めぐり<small>IAU CONSTELLATION LAB</small></span></a>
+    <div class="now-pill"><i></i><span id="clockLabel">—</span></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">STARGAZING COMPANION · 2026</div>
+      <h1>今夜の空を、<br><em>手のひらに。</em></h1>
+      <p>場所と時刻を選ぶだけ。教科書で出会った星座を、<br class="desktop">ほんものの空の向きで見つけよう。</p>
+      <div class="sky-status"><span id="sunState">夜空を計算中</span><b id="visibleCount">—</b></div>
+    </section>
+
+    <section class="workspace">
+      <aside class="panel controls">
+        <div class="panel-title"><span>01</span><h2>観察の設定</h2></div>
+        <label class="field-label">観察する場所</label>
+        <div class="location-grid" id="locations">
+          <button class="location active" data-key="takamatsu"><b>高松市</b><small>34.34°N · 134.05°E</small></button>
+          <button class="location" data-key="mitaka"><b>東京・三鷹市</b><small>35.68°N · 139.56°E</small></button>
+          <button class="location" data-key="naha"><b>那覇市</b><small>26.21°N · 127.68°E</small></button>
+          <button class="location" data-key="sapporo"><b>札幌市</b><small>43.06°N · 141.35°E</small></button>
+        </div>
+
+        <div class="datetime-head"><label class="field-label">日時</label><button id="setNow">現在時刻に戻す</button></div>
+        <div class="date-row"><input id="dateInput" type="date"><input id="timeInput" type="time" step="60"></div>
+
+        <div class="divider"></div>
+        <div class="panel-title compact"><span>02</span><h2>表示する明るさ</h2></div>
+        <p class="helper">等級帯ごとに表示を切り替えられます。</p>
+        <div id="magnitudeFilters" class="magnitude-grid"></div>
+        <button class="text-button" id="toggleAll">すべて選択 / 解除</button>
+
+        <div class="divider"></div>
+        <div class="panel-title compact"><span>03</span><h2>星座</h2></div>
+        <p class="helper">小学校の理科で扱う代表的な星座</p>
+        <div id="constellationFilters" class="chips"></div>
+      </aside>
+
+      <section class="viewer-card">
+        <div class="viewer-head">
+          <div><p>LIVE SKY</p><h2 id="viewerTitle">高松市の空</h2></div>
+          <div class="legend"><span><i class="star-dot"></i>恒星</span><span><i class="line-dot"></i>星座線</span></div>
+        </div>
+        <div class="chart-wrap">
+          <svg id="skyChart" viewBox="0 0 800 800" aria-label="現在の星空"></svg>
+          <div class="direction north">北</div><div class="direction east">東</div><div class="direction south">南</div><div class="direction west">西</div>
+          <div class="chart-center"><span>天頂</span></div>
+        </div>
+        <div class="viewer-note"><span>◉</span><p><b>空にかざす向き</b><br>見たい方角を下にして、頭上にかざしてください。</p></div>
+      </section>
+    </section>
+
+    <section class="download-section">
+      <div><span class="eyebrow">PRINT & ASSEMBLE</span><h2>じぶんだけの早見盤をつくろう</h2><p>母盤と回転窓をSVGで保存。A4・100%で印刷し、中心を割りピンで留めてください。</p></div>
+      <div class="download-cards">
+        <button class="download-card" id="downloadPlate"><span class="file-icon">✦</span><span><small>STAR PLATE · SVG</small><b>星図の母盤を保存</b></span><i>↓</i></button>
+        <button class="download-card accent" id="downloadWindow"><span class="file-icon">◒</span><span><small>HORIZON MASK · SVG</small><b>回転窓を保存</b></span><i>↓</i></button>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>IAUの88星座体系 / 明るい星のJ2000座標を参照</span><span>背景の微光星と星座線は教材向けの縮約表現です</span></footer>
+  <div id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
