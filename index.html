@@ -38,6 +38,13 @@ html,body,button,input,select,textarea,.hero h1,.viewer-head h2,.download-sectio
 .compass-toggle{display:flex;align-items:center;gap:9px;margin-top:10px;padding:10px;border:1px solid var(--line);border-radius:3px;background:#f2f6ee;cursor:pointer}.compass-toggle input{accent-color:#4d7f23;width:17px;height:17px}.compass-toggle b,.compass-toggle small{display:block}.compass-toggle b{font-size:10px}.compass-toggle small{margin-top:2px;color:var(--muted);font-size:8px}
 .special-toggle{display:flex;align-items:center;gap:9px;margin-top:8px;padding:11px;border:1px solid #8ab36a;border-radius:3px;background:linear-gradient(135deg,#f5f9f0,#e8f2df);cursor:pointer}.special-toggle input{accent-color:#4d7f23;width:18px;height:18px}.special-toggle b,.special-toggle small{display:block}.special-toggle b{font-size:10px;color:#315b18}.special-toggle small{margin-top:2px;color:#658052;font-size:8px}#skyChart.three-d{cursor:grab}#skyChart.three-d.dragging{cursor:grabbing}
 
+/* Fullscreen planisphere */
+.fullscreen-exit{position:absolute;right:18px;top:18px;z-index:8;display:none;border:1px solid #45606f;background:#102536;color:#d7e0e5;border-radius:999px;padding:9px 14px;font-size:11px;cursor:pointer;box-shadow:0 10px 30px #0007}
+.chart-wrap:fullscreen,.chart-wrap.fallback-fullscreen{width:100vw!important;height:100dvh!important;max-width:none!important;margin:0!important;aspect-ratio:auto!important;background:#071321;display:flex!important;align-items:center;justify-content:center;padding:calc(10px + env(safe-area-inset-top)) calc(10px + env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) calc(10px + env(safe-area-inset-left))}
+.chart-wrap:fullscreen #skyChart,.chart-wrap.fallback-fullscreen #skyChart{width:min(100vw,100dvh)!important;height:min(100vw,100dvh)!important;max-width:100%;max-height:100%}
+.chart-wrap:fullscreen .fullscreen-exit,.chart-wrap.fallback-fullscreen .fullscreen-exit{display:block}
+.chart-wrap.fallback-fullscreen{position:fixed!important;inset:0!important;z-index:1000}.chart-wrap:fullscreen:after,.chart-wrap.fallback-fullscreen:after{display:none}.chart-wrap:fullscreen .chart-center,.chart-wrap.fallback-fullscreen .chart-center{z-index:3}body.chart-fallback-fullscreen{overflow:hidden}#fullChart.active{background:#88b260;border-color:#88b260;color:#13261a;font-weight:800}
+
   </style>
 </head>
 <body>
@@ -110,10 +117,11 @@ html,body,button,input,select,textarea,.hero h1,.viewer-head h2,.download-sectio
         </div>
         <div class="rotation-toolbar" aria-label="回転する盤の選択">
           <span id="interactionHelp">円盤内：回転盤　／　外側：母盤　／　ホイール・2本指ピンチ：拡大縮小 <b id="zoomLabel">100%</b></span>
-          <button id="resetRotation">位置をリセット</button>
+          <button id="resetRotation">位置をリセット</button><button id="fullChart" type="button">早見盤を全画面</button>
         </div>
         <div class="chart-wrap">
           <svg id="skyChart" viewBox="0 0 800 800" aria-label="マウスで回せる星座早見盤"></svg>
+          <button id="exitFullChart" class="fullscreen-exit" type="button">全画面を終了</button>
           <div class="chart-center"><span>北極星・回転中心</span></div>
         </div>
         <div class="viewer-note"><span>↻</span><p><b>回転板をマウスで回せます</b><br>盤面を左右にドラッグして月日と時刻を合わせます。見たい方角を下にして空にかざしてください。</p></div>
@@ -184,8 +192,15 @@ function bind(){
  $('#resetRotation').onclick=()=>{state.plateRotation=0;state.windowRotation=0;state.viewYaw=0;state.viewPitch=58;render()};
  bindDial();
  bindZoom();
+ bindFullscreen();
  $('#autoCompass').onchange=e=>setCompassEnabled(e.target.checked);
  $('#threeDMode').onchange=e=>{state.threeD=e.target.checked;$('#skyChart').classList.toggle('three-d',state.threeD);$('#skyChart').closest('.chart-wrap')?.classList.toggle('three-d-active',state.threeD);render()};
+}
+function bindFullscreen(){
+ const wrap=$('.chart-wrap'),full=$('#fullChart'),exit=$('#exitFullChart');if(!wrap||!full||!exit)return;
+ const native=!!(wrap.requestFullscreen||wrap.webkitRequestFullscreen),isNative=()=>document.fullscreenElement===wrap||document.webkitFullscreenElement===wrap,isFallback=()=>wrap.classList.contains('fallback-fullscreen'),active=()=>isNative()||isFallback(),redraw=()=>requestAnimationFrame(()=>render()),update=()=>{const on=active();full.textContent=on?'全画面を終了':'早見盤を全画面';full.classList.toggle('active',on);redraw()},enterFallback=()=>{wrap.classList.add('fallback-fullscreen');document.body.classList.add('chart-fallback-fullscreen');update()},leaveFallback=()=>{wrap.classList.remove('fallback-fullscreen');document.body.classList.remove('chart-fallback-fullscreen');update()};
+ const enter=()=>{if(!native){enterFallback();return}const p=wrap.requestFullscreen?wrap.requestFullscreen():wrap.webkitRequestFullscreen();if(p&&typeof p.catch==='function')p.catch(enterFallback)},leave=()=>{if(isFallback())leaveFallback();if(isNative()){if(document.exitFullscreen)document.exitFullscreen();else if(document.webkitExitFullscreen)document.webkitExitFullscreen()}};
+ full.onclick=()=>active()?leave():enter();exit.onclick=leave;document.addEventListener('fullscreenchange',update);document.addEventListener('webkitfullscreenchange',update);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&isFallback())leaveFallback()});window.addEventListener('orientationchange',()=>{if(active())redraw()});window.addEventListener('resize',()=>{if(active())redraw()})
 }
 function tick(){const d=new Date();$('#clockLabel').textContent=`${d.getFullYear()}.${pad(d.getMonth()+1)}.${pad(d.getDate())}  ${pad(d.getHours())}:${pad(d.getMinutes())} JST`;setTimeout(tick,30000)}
 function julian(d){return d.getTime()/86400000+2440587.5} function lst(d,lon){const jd=julian(d),t=(jd-2451545)/36525;return ((280.46061837+360.98564736629*(jd-2451545)+.000387933*t*t+lon)%360+360)%360}
