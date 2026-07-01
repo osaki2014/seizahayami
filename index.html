@@ -5,10 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#07111e" />
   <title>星座早見盤</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
 :root{--ink:#0b1625;--muted:#718096;--paper:#f4f1e9;--card:#fbfaf6;--navy:#071321;--blue:#1856d8;--cyan:#79d7dc;--line:#d8d7d0;--gold:#f0b453}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif}.topbar{height:82px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #dedbd2;background:rgba(244,241,233,.92);position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}.brand{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none;font-weight:800;letter-spacing:.06em}.brand-mark{width:36px;height:36px;border:1px solid var(--ink);border-radius:50%;display:grid;place-items:center}.brand small{display:block;font-size:8px;letter-spacing:.18em;color:var(--muted);margin-top:2px}.now-pill{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:700;letter-spacing:.06em}.now-pill i{width:7px;height:7px;border-radius:50%;background:#3ac28b;box-shadow:0 0 0 4px #3ac28b22}.hero{padding:74px 6vw 54px;min-height:390px;position:relative;overflow:hidden;background:radial-gradient(circle at 80% 35%,#d6ece7 0,transparent 25%),linear-gradient(110deg,#f5f2ea 55%,#e9ede8)}.hero:after{content:"✦";position:absolute;right:10%;top:32px;font-size:220px;color:#fff8;filter:drop-shadow(0 20px 40px #4a7a7420)}.eyebrow{font-size:10px;letter-spacing:.28em;font-weight:800;color:#447c7a}.hero h1{font-family:Georgia,"Yu Mincho",serif;font-size:clamp(48px,7vw,88px);line-height:1.05;margin:16px 0 22px;letter-spacing:-.04em}.hero h1 em{color:#1c5ba8;font-style:normal}.hero p{color:#5e6874;line-height:2}.sky-status{display:inline-flex;align-items:center;gap:25px;margin-top:14px;padding:10px 14px;border-left:2px solid var(--gold);font-size:12px}.sky-status b{font-family:Georgia;font-size:24px}.workspace{display:grid;grid-template-columns:minmax(300px,360px) minmax(520px,1fr);gap:22px;padding:32px 5vw 70px;max-width:1500px;margin:auto}.panel,.viewer-card{background:var(--card);border:1px solid #dedbd2;border-radius:4px}.controls{padding:28px}.panel-title{display:flex;align-items:center;gap:13px;margin-bottom:24px}.panel-title span{font:700 10px Georgia;color:#29767a;border:1px solid #9bc8c7;border-radius:50%;width:28px;height:28px;display:grid;place-items:center}.panel-title h2{font-size:16px;margin:0}.panel-title.compact{margin-bottom:8px}.field-label{display:block;font-size:11px;font-weight:800;margin:16px 0 10px}.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.location{padding:12px;text-align:left;background:#fff;border:1px solid var(--line);border-radius:3px;color:var(--ink);cursor:pointer}.location b{display:block;font-size:12px}.location small{font-size:8px;color:var(--muted)}.location.active{background:#0d2738;color:#fff;border-color:#0d2738}.location.active small{color:#aec3cc}.datetime-head{display:flex;align-items:end;justify-content:space-between}.datetime-head button,.text-button{border:0;background:transparent;color:#226a93;font-size:10px;text-decoration:underline;cursor:pointer}.date-row{display:grid;grid-template-columns:1.5fr 1fr;gap:8px}.date-row input{width:100%;padding:10px;border:1px solid var(--line);background:#fff;border-radius:3px;color:var(--ink)}.divider{height:1px;background:#dedbd2;margin:27px 0}.helper{font-size:10px;color:var(--muted);line-height:1.6;margin:0 0 12px}.magnitude-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.mag-check input{display:none}.mag-check span{height:35px;border:1px solid var(--line);display:grid;place-items:center;border-radius:3px;font:700 10px Georgia;background:#fff;cursor:pointer}.mag-check input:checked+span{background:#1c5ba8;border-color:#1c5ba8;color:#fff}.text-button{margin-top:10px}.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{border:1px solid var(--line);background:#fff;padding:7px 9px;border-radius:99px;font-size:10px;cursor:pointer}.chip.active{color:#155868;border-color:#62a9ad;background:#e5f3f1}.viewer-card{background:var(--navy);color:white;padding:22px;overflow:hidden}.viewer-head{display:flex;justify-content:space-between;align-items:center}.viewer-head p{color:#6cc7d0;font-size:9px;letter-spacing:.2em;margin:0 0 5px}.viewer-head h2{font:400 20px Georgia;margin:0}.legend{display:flex;gap:15px;color:#96a5b2;font-size:9px}.legend span{display:flex;align-items:center;gap:5px}.star-dot{width:5px;height:5px;border-radius:50%;background:white}.line-dot{width:16px;height:1px;background:#6cc7d0}.chart-wrap{width:min(100%,700px);margin:10px auto 0;position:relative;aspect-ratio:1}.chart-wrap:after{content:"";position:absolute;inset:8%;border:1px solid #ffffff18;border-radius:50%;pointer-events:none}.direction{position:absolute;font:500 14px Georgia;color:#b8c5cc;z-index:2}.north{top:5%;left:50%}.south{bottom:5%;left:50%}.east{right:5%;top:50%}.west{left:5%;top:50%}.chart-center{position:absolute;inset:49%;width:1px;height:1px}.chart-center:before,.chart-center:after{content:"";position:absolute;background:#ffffff45}.chart-center:before{width:18px;height:1px;left:-9px}.chart-center:after{height:18px;width:1px;top:-9px}.chart-center span{position:absolute;white-space:nowrap;color:#ffffff55;font-size:8px;transform:translate(8px,8px)}#skyChart{width:100%;height:100%;display:block}.viewer-note{border-top:1px solid #ffffff16;padding:16px 8px 0;display:flex;gap:12px;color:#8fa3af;font-size:10px}.viewer-note p{margin:0;line-height:1.7}.viewer-note b{color:#d7e0e5}.download-section{background:#dcefed;padding:60px 6vw 75px;display:grid;grid-template-columns:1fr 1.2fr;gap:50px;align-items:center}.download-section h2{font:400 clamp(30px,4vw,49px) Georgia,"Yu Mincho",serif;margin:12px 0}.download-section p{font-size:12px;color:#597172;line-height:1.8}.download-cards{display:grid;gap:10px}.download-card{background:#fff;border:0;padding:22px;display:grid;grid-template-columns:44px 1fr 24px;align-items:center;text-align:left;color:var(--ink);cursor:pointer;box-shadow:0 8px 20px #1b5a5a14}.download-card.accent{background:#123447;color:#fff}.download-card small{display:block;font-size:8px;letter-spacing:.15em;color:#6e8d91;margin-bottom:5px}.download-card b{font-size:13px}.download-card i{font-size:20px}.file-icon{font-size:23px;color:#3aa6aa}footer{padding:22px 5vw;display:flex;justify-content:space-between;font-size:9px;color:#7f878a;background:#f4f1e9}#toast{position:fixed;right:24px;bottom:24px;background:#102b3b;color:white;padding:13px 18px;border-radius:3px;font-size:11px;opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none;z-index:20}#toast.show{opacity:1;transform:none}@media(max-width:850px){.workspace{grid-template-columns:1fr}.hero:after{right:-50px;opacity:.5}.download-section{grid-template-columns:1fr}.viewer-card{padding:14px}.desktop{display:none}}@media(max-width:500px){.topbar{height:66px}.now-pill{display:none}.hero{padding:50px 6vw 35px;min-height:320px}.hero h1{font-size:48px}.workspace{padding:18px 12px 45px}.controls{padding:20px}.location-grid{grid-template-columns:1fr}.magnitude-grid{grid-template-columns:repeat(4,1fr)}.legend{display:none}.download-section{padding:45px 20px}.download-card{padding:17px}footer{display:block;line-height:2}}
-/* Simple app identity */
-.brand{gap:14px}.brand-mark{flex:0 0 auto;width:38px;height:38px;border:1.4px solid var(--ink);border-radius:50%;display:grid;place-items:center;background:transparent;color:var(--ink)}.brand-mark svg{width:19px;height:19px;display:block}.brand-star{fill:currentColor;stroke:none}.app-identity{white-space:nowrap}.app-identity small{display:block;font-size:8px;letter-spacing:.18em;color:var(--muted);margin-top:2px}footer{align-items:center;gap:30px}footer>div:first-child{display:flex;flex-direction:column;gap:5px}.footer-credit{text-align:right}.footer-credit b,.footer-credit small{display:block}.footer-credit b{font-size:10px;color:#456b2f}.footer-credit small{margin-top:5px;font-size:7px;letter-spacing:.02em}@media(max-width:650px){.brand{gap:10px}.brand-mark{width:34px;height:34px}.brand-mark svg{width:19px;height:19px}.app-identity{font-size:11px}.app-identity small{font-size:6px}footer{display:flex;flex-direction:column;align-items:flex-start}.footer-credit{text-align:left}}
+/* Kagawa University identity */
+.brand{gap:18px}.university-logo{display:block;width:186px;height:auto}.app-identity{padding-left:18px;border-left:1px solid #c9c9c2;white-space:nowrap}footer{align-items:center;gap:30px}footer>div:first-child{display:flex;flex-direction:column;gap:5px}.footer-credit{text-align:right}.footer-credit b,.footer-credit small{display:block}.footer-credit b{font-size:10px;color:#456b2f}.footer-credit small{margin-top:5px;font-size:7px;letter-spacing:.02em}@media(max-width:650px){.university-logo{width:145px}.app-identity{font-size:11px;padding-left:12px}.app-identity small{font-size:6px}.brand{gap:12px}footer{display:flex;flex-direction:column;align-items:flex-start}.footer-credit{text-align:left}}
+/* Typography and 3D presentation */
+html,body,button,input,select,textarea,.hero h1,.viewer-head h2,.download-section h2{font-family:"Avenir Next","IBM Plex Sans JP",sans-serif}svg text,#skyChart text{font-family:"Avenir Next","IBM Plex Sans JP",sans-serif}.brand-mark{font-family:"Avenir Next",sans-serif;font-size:18px}.chart-wrap.three-d-active:after,.chart-wrap.three-d-active .chart-center,.chart-wrap:has(#skyChart.three-d):after,.chart-wrap:has(#skyChart.three-d) .chart-center{display:none!important}
 
 .layer-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .layer-grid label{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid var(--line);background:#fff;border-radius:3px;font-size:10px;cursor:pointer}
@@ -33,77 +38,11 @@
 .compass-toggle{display:flex;align-items:center;gap:9px;margin-top:10px;padding:10px;border:1px solid var(--line);border-radius:3px;background:#f2f6ee;cursor:pointer}.compass-toggle input{accent-color:#4d7f23;width:17px;height:17px}.compass-toggle b,.compass-toggle small{display:block}.compass-toggle b{font-size:10px}.compass-toggle small{margin-top:2px;color:var(--muted);font-size:8px}
 .special-toggle{display:flex;align-items:center;gap:9px;margin-top:8px;padding:11px;border:1px solid #8ab36a;border-radius:3px;background:linear-gradient(135deg,#f5f9f0,#e8f2df);cursor:pointer}.special-toggle input{accent-color:#4d7f23;width:18px;height:18px}.special-toggle b,.special-toggle small{display:block}.special-toggle b{font-size:10px;color:#315b18}.special-toggle small{margin-top:2px;color:#658052;font-size:8px}#skyChart.three-d{cursor:grab}#skyChart.three-d.dragging{cursor:grabbing}
 
-/* Fullscreen planisphere view */
-.chart-wrap:fullscreen{
-  width:100vw;
-  height:100vh;
-  max-width:none;
-  margin:0;
-  aspect-ratio:auto;
-  background:#071321;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-}
-.chart-wrap:fullscreen #skyChart{
-  width:min(100vw,100vh);
-  height:min(100vw,100vh);
-  max-width:100%;
-  max-height:100%;
-}
-.chart-wrap:fullscreen:after{
-  inset:calc((100% - min(100vw,100vh))/2 + 8%);
-}
-.fullscreen-exit{
-  position:absolute;
-  right:18px;
-  top:18px;
-  z-index:6;
-  display:none;
-  border:1px solid #45606f;
-  background:#102536;
-  color:#d7e0e5;
-  border-radius:999px;
-  padding:9px 14px;
-  font-size:11px;
-  cursor:pointer;
-  box-shadow:0 10px 30px #0007;
-}
-.chart-wrap:fullscreen .fullscreen-exit{display:block}
-body.chart-fallback-fullscreen{overflow:hidden}
-.chart-wrap.fallback-fullscreen{
-  position:fixed!important;
-  inset:0!important;
-  z-index:1000;
-  width:100vw!important;
-  height:100dvh!important;
-  max-width:none!important;
-  margin:0!important;
-  aspect-ratio:auto!important;
-  background:#071321;
-  display:flex!important;
-  align-items:center;
-  justify-content:center;
-  padding:calc(10px + env(safe-area-inset-top)) calc(10px + env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) calc(10px + env(safe-area-inset-left));
-}
-.chart-wrap.fallback-fullscreen #skyChart{
-  width:min(100vw,100dvh)!important;
-  height:min(100vw,100dvh)!important;
-  max-width:100%;
-  max-height:100%;
-}
-.chart-wrap.fallback-fullscreen:after{
-  inset:calc((100% - min(100vw,100dvh))/2 + 8%);
-}
-.chart-wrap.fallback-fullscreen .fullscreen-exit{display:block}
-#fullChart{border-style:solid}
-
   </style>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#" aria-label="星座早見盤"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" role="img"><path class="brand-star" d="M16 8.7l2.05 5.02 5.42.42-4.14 3.53 1.28 5.28L16 20.08l-4.61 2.87 1.28-5.28-4.14-3.53 5.42-.42L16 8.7z"/></svg></span><span class="app-identity">星座早見盤<small>IAU CONSTELLATION LAB</small></span></a>
+    <a class="brand" href="#"><span class="brand-mark" aria-hidden="true">★</span><span>星座早見盤<small>IAU CONSTELLATION LAB</small></span></a>
     <div class="now-pill"><i></i><span id="clockLabel">—</span></div>
   </header>
 
@@ -171,11 +110,10 @@ body.chart-fallback-fullscreen{overflow:hidden}
         </div>
         <div class="rotation-toolbar" aria-label="回転する盤の選択">
           <span id="interactionHelp">円盤内：回転盤　／　外側：母盤　／　ホイール・2本指ピンチ：拡大縮小 <b id="zoomLabel">100%</b></span>
-          <button id="resetRotation">位置をリセット</button><button id="fullChart">早見盤を全画面</button><button id="flip3DView">3Dを裏返す</button>
+          <button id="resetRotation">位置をリセット</button>
         </div>
         <div class="chart-wrap">
           <svg id="skyChart" viewBox="0 0 800 800" aria-label="マウスで回せる星座早見盤"></svg>
-          <button id="exitFullChart" class="fullscreen-exit" type="button">全画面を終了</button>
           <div class="chart-center"><span>北極星・回転中心</span></div>
         </div>
         <div class="viewer-note"><span>↻</span><p><b>回転板をマウスで回せます</b><br>盤面を左右にドラッグして月日と時刻を合わせます。見たい方角を下にして空にかざしてください。</p></div>
@@ -219,42 +157,14 @@ const groups={
  'うしかい座':[[213.92,19.18,-.05,'アークトゥルス'],[221.25,27.07,2.37,'イザール'],[208.67,18.4,2.68,'ムフリッド'],[225.49,40.39,3.5,'ネッカル'],[218.02,38.31,3.03,'セギヌス'],[228.88,33.31,3.47,'']]
 };
 const lineOrder={'オリオン座':[[0,1],[0,2],[1,2],[2,3],[3,4],[4,6],[2,5]],'さそり座':[[1,0],[0,2],[2,3],[3,4]],'カシオペヤ座':[[0,1],[1,2],[2,3],[3,4]],'はくちょう座':[[0,1],[1,2],[3,1],[1,4]],'こと座':[[0,2],[2,3],[3,1],[1,0]],'わし座':[[1,0],[0,2]],'おおぐま座':[[0,1],[0,2],[1,3],[2,3],[3,4],[4,5],[5,6]],'こぐま座':[[0,3],[3,4],[4,5],[5,1],[1,2],[2,6],[6,5]],'おうし座':[[0,3],[3,4],[4,2],[4,1]],'ふたご座':[[0,1],[0,4],[1,3],[3,2]],'しし座':[[0,3],[3,4],[3,2],[2,1]],'みなみじゅうじ座':[[0,2],[1,3]],'うしかい座':[[0,1],[0,2],[1,4],[4,3],[3,5],[5,1]]};
-let state={location:'takamatsu',date:new Date(),mags:new Set([...Array(11).keys()]),constellations:new Set(Object.keys(groups)),layers:new Set(['lines','starNames','constellationNames','ecliptic','equator','meridian','milkyway','backgroundStars','dateScale','window','azimuth','timeScale']),catalogs:new Set(['school']),lineSource:'oae',rotationMode:'window',plateRotation:0,windowRotation:0,compassRotation:0,zoom:1,threeD:false,viewYaw:0,viewPitch:58};
+let state={location:'takamatsu',date:new Date(),mags:new Set([...Array(11).keys()]),constellations:new Set(Object.keys(groups)),layers:new Set(['lines','starNames','constellationNames','ecliptic','equator','meridian','milkyway','backgroundStars','dateScale','window','azimuth','timeScale']),catalogs:new Set(['school']),lineSource:'oae',rotationMode:'window',plateRotation:0,windowRotation:0,compassRotation:0,zoom:1,threeD:false,viewYaw:0,viewPitch:58,depthScale:.135};
 const ZODIAC_IDS=new Set(['Ari','Tau','Gem','Cnc','Leo','Vir','Lib','Sco','Sgr','Cap','Aqr','Psc']);
 const SCHOOL_ID_BY_NAME={'オリオン座':'Ori','さそり座':'Sco','カシオペヤ座':'Cas','はくちょう座':'Cyg','こと座':'Lyr','わし座':'Aql','おおぐま座':'UMa','こぐま座':'UMi','おうし座':'Tau','ふたご座':'Gem','しし座':'Leo','みなみじゅうじ座':'Cru','うしかい座':'Boo'};
 const STAR_FACTS={'ベテルギウス':[550,'赤色','#f09a76'],'ベラトリクス':[250,'青白色','#a9c9ff'],'ミンタカ':[1200,'青白色','#a9c9ff'],'アルニラム':[2000,'青白色','#a9c9ff'],'アルニタク':[1260,'青白色','#a9c9ff'],'リゲル':[860,'青白色','#b8d5ff'],'サイフ':[650,'青白色','#a9c9ff'],'アンタレス':[550,'赤色','#f07f62'],'ジュバ':[400,'青白色','#b6d2ff'],'シャウラ':[570,'青白色','#a9c9ff'],'サルガス':[300,'黄白色','#ffe3a0'],'カフ':[55,'黄白色','#ffe3a0'],'シェダル':[230,'橙色','#ffb16d'],'ナビ':[550,'青白色','#aacaff'],'ルクバー':[100,'青白色','#b4d0ff'],'セギン':[440,'青白色','#a9c9ff'],'デネブ':[2600,'青白色','#b8d5ff'],'サドル':[1800,'黄白色','#fff0b0'],'アルビレオ':[430,'橙色と青色','#ffc078'],'ベガ':[25,'白色','#eef5ff'],'アルタイル':[17,'白色','#f4f4ff'],'北極星':[430,'黄白色','#fff0b0'],'メラク':[80,'白色','#eef5ff'],'ドゥベ':[123,'橙色','#ffc083'],'ミザール':[83,'白色','#eef5ff'],'アルカイド':[104,'青白色','#b8d5ff'],'アルデバラン':[65,'橙色','#ffad6f'],'エルナト':[134,'青白色','#b8d5ff'],'ポルックス':[34,'橙色','#ffc080'],'カストル':[51,'白色','#eef5ff'],'アルヘナ':[109,'白色','#eef5ff'],'レグルス':[79,'青白色','#b8d5ff'],'デネボラ':[36,'白色','#eef5ff'],'ゾスマ':[58,'白色','#eef5ff'],'アルギエバ':[130,'橙色','#ffc080'],'アクルックス':[320,'青白色','#b8d5ff'],'ミモザ':[280,'青白色','#b8d5ff'],'アークトゥルス':[37,'橙色','#ffad6f'],'イザール':[200,'橙色と青色','#ffc078'],'ムフリッド':[37,'黄白色','#fff0b0'],'ネッカル':[225,'黄白色','#ffe3a0'],'セギヌス':[85,'白色','#eef5ff']};
 const $=s=>document.querySelector(s), svgEl=(tag,attrs={})=>{const e=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));return e};
 function pad(n){return String(n).padStart(2,'0')} function localValue(d){return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`}
-function normDeg(a){return ((a%360)+360)%360}
-function daysInYear(year){return (new Date(year+1,0,1)-new Date(year,0,1))/86400000}
-function dayIndex(d){return Math.floor((new Date(d.getFullYear(),d.getMonth(),d.getDate())-new Date(d.getFullYear(),0,1))/86400000)}
-function updateDateInputs(){
- $('#dateInput').value=localValue(state.date);
- $('#timeInput').value=`${pad(state.date.getHours())}:${pad(state.date.getMinutes())}`;
-}
-function syncRotationsFromDate(){
- const days=daysInYear(state.date.getFullYear()),day=dayIndex(state.date),minutes=state.date.getHours()*60+state.date.getMinutes();
- state.plateRotation=normDeg(-(day/days)*360);
- state.windowRotation=normDeg(-(minutes/1440)*360);
-}
-function syncDateFromRotations(part){
- const y=state.date.getFullYear(),days=daysInYear(y);
- let d=state.date;
- if(part==='plate'){
-  const raw=normDeg(-state.plateRotation)/360*days;
-  const day=Math.max(0,Math.min(days-1,Math.round(raw)%days));
-  d=new Date(y,0,1+day,d.getHours(),d.getMinutes(),0);
- }else if(part==='window'){
-  const raw=normDeg(-state.windowRotation)/360*1440;
-  const minutes=Math.round(raw/5)*5%1440;
-  d=new Date(y,d.getMonth(),d.getDate(),Math.floor(minutes/60),minutes%60,0);
- }
- state.date=d;
- updateDateInputs();
-}
 function init(){
- syncRotationsFromDate();
- updateDateInputs();
+ $('#dateInput').value=localValue(state.date);$('#timeInput').value=`${pad(state.date.getHours())}:${pad(state.date.getMinutes())}`;
  const magNames=['1等未満',...Array.from({length:10},(_,i)=>`${i+1}等`)];
  $('#magnitudeFilters').innerHTML=magNames.map((n,i)=>`<label class="mag-check"><input type="checkbox" data-mag="${i}" checked><span>${n}</span></label>`).join('');
  $('#constellationFilters').innerHTML=Object.keys(groups).map(n=>`<button class="chip active" data-name="${n}">${n}</button>`).join('');
@@ -262,8 +172,8 @@ function init(){
 }
 function bind(){
  $('#locations').addEventListener('click',e=>{const b=e.target.closest('.location');if(!b)return;state.location=b.dataset.key;document.querySelectorAll('.location').forEach(x=>x.classList.toggle('active',x===b));render()});
- const updateDate=()=>{state.date=new Date(`${$('#dateInput').value}T${$('#timeInput').value}:00`);syncRotationsFromDate();updateDateInputs();render()};$('#dateInput').addEventListener('input',updateDate);$('#timeInput').addEventListener('input',updateDate);$('#dateInput').addEventListener('change',updateDate);$('#timeInput').addEventListener('change',updateDate);
- $('#setNow').onclick=()=>{state.date=new Date();syncRotationsFromDate();updateDateInputs();render()};
+ const updateDate=()=>{state.date=new Date(`${$('#dateInput').value}T${$('#timeInput').value}:00`);render()};$('#dateInput').onchange=updateDate;$('#timeInput').onchange=updateDate;
+ $('#setNow').onclick=()=>{state.date=new Date();$('#dateInput').value=localValue(state.date);$('#timeInput').value=`${pad(state.date.getHours())}:${pad(state.date.getMinutes())}`;render()};
  $('#magnitudeFilters').onchange=e=>{const m=+e.target.dataset.mag;e.target.checked?state.mags.add(m):state.mags.delete(m);render()};
  $('#layerFilters').onchange=e=>{const n=e.target.dataset.layer;e.target.checked?state.layers.add(n):state.layers.delete(n);render()};
  $('#catalogFilters').onchange=e=>{const n=e.target.dataset.catalog;e.target.checked?state.catalogs.add(n):state.catalogs.delete(n);render()};
@@ -271,12 +181,11 @@ function bind(){
  $('#toggleAll').onclick=()=>{const on=state.mags.size<11;state.mags=on?new Set([...Array(11).keys()]):new Set();document.querySelectorAll('[data-mag]').forEach(x=>x.checked=on);render()};
  $('#constellationFilters').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;const n=b.dataset.name;state.constellations.has(n)?state.constellations.delete(n):state.constellations.add(n);b.classList.toggle('active');render()};
  $('#downloadPlate').onclick=()=>downloadSVG(exportVisibleLayer('mother'),'sorameguri-star-plate.svg');$('#downloadWindow').onclick=()=>downloadSVG(exportVisibleLayer('window'),'sorameguri-horizon-window.svg');
- $('#resetRotation').onclick=()=>{state.plateRotation=0;state.windowRotation=0;state.viewYaw=0;state.viewPitch=58;syncDateFromRotations('plate');syncDateFromRotations('window');render()};
- $('#flip3DView').onclick=()=>{state.viewPitch=180-state.viewPitch;render()};
+ $('#resetRotation').onclick=()=>{state.plateRotation=0;state.windowRotation=0;state.viewYaw=0;state.viewPitch=58;render()};
  bindDial();
  bindZoom();
  $('#autoCompass').onchange=e=>setCompassEnabled(e.target.checked);
- $('#threeDMode').onchange=e=>{state.threeD=e.target.checked;$('#skyChart').classList.toggle('three-d',state.threeD);render()};
+ $('#threeDMode').onchange=e=>{state.threeD=e.target.checked;$('#skyChart').classList.toggle('three-d',state.threeD);$('#skyChart').closest('.chart-wrap')?.classList.toggle('three-d-active',state.threeD);render()};
 }
 function tick(){const d=new Date();$('#clockLabel').textContent=`${d.getFullYear()}.${pad(d.getMonth()+1)}.${pad(d.getDate())}  ${pad(d.getHours())}:${pad(d.getMinutes())} JST`;setTimeout(tick,30000)}
 function julian(d){return d.getTime()/86400000+2440587.5} function lst(d,lon){const jd=julian(d),t=(jd-2451545)/36525;return ((280.46061837+360.98564736629*(jd-2451545)+.000387933*t*t+lon)%360+360)%360}
@@ -312,7 +221,7 @@ function bindDial(){
  const svg=$('#skyChart'),pointers=new Map();let dragging=false,lastAngle=0,lastPoint=null,frame=0,pinchStart=0,zoomStart=1;
  const coords=e=>{const r=svg.getBoundingClientRect();return{x:(e.clientX-r.left)/r.width*800-400,y:(e.clientY-r.top)/r.height*800-400}},angle=e=>{const p=coords(e);return Math.atan2(p.y,p.x)},modeAt=e=>Math.hypot(coords(e).x,coords(e).y)<=340?'window':'plate',distance=()=>{const p=[...pointers.values()];return p.length<2?0:Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y)},showZoom=()=>{svg.style.transform=`scale(${state.zoom})`;if($('#zoomLabel'))$('#zoomLabel').textContent=`${Math.round(state.zoom*100)}%`};
  svg.addEventListener('pointerdown',e=>{const onStar=!!e.target.closest('[data-tooltip-hit]');if(!onStar)$('#starTooltip').classList.remove('show');pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});svg.setPointerCapture(e.pointerId);if(pointers.size===2){dragging=false;pinchStart=distance();zoomStart=state.zoom;svg.classList.remove('dragging');return}if(state.threeD&&onStar)return;dragging=true;state.rotationMode=modeAt(e);lastAngle=angle(e);lastPoint={x:e.clientX,y:e.clientY};svg.classList.add('dragging')});
- svg.addEventListener('pointermove',e=>{if(pointers.has(e.pointerId))pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size>=2){const d=distance();if(pinchStart>0){state.zoom=Math.min(3,Math.max(.75,zoomStart*d/pinchStart));showZoom()}return}if(!dragging)return;if(state.threeD){state.viewYaw=(state.viewYaw-(e.clientX-lastPoint.x)*.45+360)%360;state.viewPitch=Math.min(170,Math.max(-170,state.viewPitch-(e.clientY-lastPoint.y)*.3));lastPoint={x:e.clientX,y:e.clientY}}else{const a=angle(e),delta=Math.atan2(Math.sin(a-lastAngle),Math.cos(a-lastAngle))*180/Math.PI;lastAngle=a;if(state.rotationMode==='plate'){state.plateRotation=normDeg(state.plateRotation+delta);syncDateFromRotations('plate')}else{state.windowRotation=normDeg(state.windowRotation+delta);syncDateFromRotations('window')}}if(!frame)frame=requestAnimationFrame(()=>{frame=0;render()})});
+ svg.addEventListener('pointermove',e=>{if(pointers.has(e.pointerId))pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size>=2){const d=distance();if(pinchStart>0){state.zoom=Math.min(3,Math.max(.75,zoomStart*d/pinchStart));showZoom()}return}if(!dragging)return;if(state.threeD){state.viewYaw=(state.viewYaw-(e.clientX-lastPoint.x)*.45+360)%360;state.viewPitch=(state.viewPitch-(e.clientY-lastPoint.y)*.3+360)%360;lastPoint={x:e.clientX,y:e.clientY}}else{const a=angle(e),delta=Math.atan2(Math.sin(a-lastAngle),Math.cos(a-lastAngle))*180/Math.PI;lastAngle=a;if(state.rotationMode==='plate')state.plateRotation=(state.plateRotation+delta+360)%360;else state.windowRotation=(state.windowRotation+delta+360)%360}if(!frame)frame=requestAnimationFrame(()=>{frame=0;render()})});
  const end=e=>{pointers.delete(e.pointerId);if(pointers.size<2)pinchStart=0;if(pointers.size===0){dragging=false;svg.classList.remove('dragging')}};svg.addEventListener('pointerup',end);svg.addEventListener('pointercancel',end)
 }
 function bindZoom(){const svg=$('#skyChart');svg.addEventListener('wheel',e=>{e.preventDefault();state.zoom=Math.min(3,Math.max(.75,state.zoom*Math.exp(-e.deltaY*.001)));svg.style.transform=`scale(${state.zoom})`;if($('#zoomLabel'))$('#zoomLabel').textContent=`${Math.round(state.zoom*100)}%`},{passive:false});svg.addEventListener('dblclick',()=>{state.zoom=1;svg.style.transform='scale(1)';if($('#zoomLabel'))$('#zoomLabel').textContent='100%'})}
@@ -326,45 +235,39 @@ function catalogPath(coords){let d='',last=null;coords.forEach(([ra,dec])=>{cons
 function drawIAUCatalog(svg){let ids=null;const schoolIds=new Set();if(!state.catalogs.has('all')){ids=new Set();if(state.catalogs.has('zodiac'))ZODIAC_IDS.forEach(id=>ids.add(id));if(state.catalogs.has('school'))state.constellations.forEach(n=>{const id=SCHOOL_ID_BY_NAME[n];if(id){ids.add(id);schoolIds.add(id)}})}if(ids&&ids.size===0)return;const selected=id=>!ids||ids.has(id);if(state.layers.has('lines')){if(state.lineSource==='oae')Object.entries(IAU_LINES).forEach(([id,parts])=>{if(!selected(id))return;parts.forEach(line=>svg.append(svgEl('path',{d:catalogPath(line),fill:'none',stroke:'#73b6d7','stroke-width':.85,opacity:.72}))) });else Object.entries(IAU_BOUNDS).forEach(([id,rings])=>{if(!selected(id))return;rings.forEach(ring=>svg.append(svgEl('path',{d:catalogPath(ring)+'Z',fill:'none',stroke:'#b7cce1','stroke-width':.55,'stroke-dasharray':'3 3',opacity:.8})))})}if(state.layers.has('constellationNames'))IAU_CONSTELLATIONS.forEach(c=>{if(!selected(c.id)||schoolIds.has(c.id))return;const p=plateProjection((c.ra+360)%360,c.dec),t=svgEl('text',{x:p.x,y:p.y,fill:'#89bbcf','font-size':state.catalogs.has('all')?5.2:7,'text-anchor':'middle',opacity:.88});t.textContent=c.name;svg.append(t)})}
 function drawDSOs(svg){const names={'NGC 224':'M31 アンドロメダ銀河','NGC 1976':'M42 オリオン大星雲','M 45':'すばる','NGC 2632':'プレセペ星団','NGC 869':'二重星団 h','NGC 884':'二重星団 χ','NGC 5139':'ω星団','NGC 104':'きょしちょう座47'};BRIGHT_DSOS.forEach(d=>{const p=plateProjection((d.ra+360)%360,d.dec),cluster=['oc','gc'].includes(d.type),mark=svgEl(cluster?'circle':'path',cluster?{cx:p.x,cy:p.y,r:2.5,fill:'none',stroke:'#f3a9c5','stroke-width':1}:{d:`M${p.x} ${p.y-3}L${p.x+3} ${p.y}L${p.x} ${p.y+3}L${p.x-3} ${p.y}Z`,fill:'none',stroke:'#f3a9c5','stroke-width':1});svg.append(mark);const t=svgEl('text',{x:p.x+4,y:p.y-3,fill:'#f3a9c5','font-size':6});t.textContent=names[d.id]||d.id;svg.append(t)})}
 function drawStarHotspots(svg){const tip=$('#starTooltip');Object.values(groups).flat().forEach(s=>{const name=s[3],fact=STAR_FACTS[name];if(!name||!fact||!state.mags.has(magBin(s[2])))return;const p=plateProjection(s[0],s[1]),hit=svgEl('circle',{cx:p.x,cy:p.y,r:10,fill:'transparent','data-tooltip-hit':'true',style:'cursor:pointer'}),move=e=>{const left=Math.max(8,Math.min(window.innerWidth-190,e.clientX+(e.pointerType==='touch'?-85:14))),top=e.clientY<110?e.clientY+22:e.clientY-82;tip.style.left=`${left}px`;tip.style.top=`${Math.max(8,top)}px`},show=e=>{tip.innerHTML=`<b>${name}</b>地球からの距離：約${fact[0].toLocaleString('ja-JP')}光年<br>明るさ：${s[2]}等級<br><i style="background:${fact[2]}"></i>星の色：${fact[1]}`;tip.classList.add('show');move(e)};hit.addEventListener('pointerenter',e=>{if(e.pointerType!=='touch')show(e)});hit.addEventListener('pointermove',e=>{if(e.pointerType!=='touch')move(e)});hit.addEventListener('pointerleave',e=>{if(e.pointerType!=='touch')tip.classList.remove('show')});hit.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'||e.pointerType==='pen'){e.preventDefault();e.stopPropagation();show(e)}});svg.append(hit)})}
-const DISTANCE_DEPTH_SCALE=.135;
-const DISTANCE_AXIS_VISUAL_MAX=3000;
-function distanceToVisualDepth(ly,axisMax){return axisMax>0?ly/axisMax*DISTANCE_AXIS_VISUAL_MAX:0}
-function project3D(x,y,z=0){const yaw=state.viewYaw*Math.PI/180,pitch=state.viewPitch*Math.PI/180,c=Math.cos(yaw),s=Math.sin(yaw),xr=x*c-y*s,yr=x*s+y*c;return{x:400+xr,y:535+yr*Math.cos(pitch)-z*DISTANCE_DEPTH_SCALE*Math.sin(pitch),depth:yr*Math.sin(pitch)+z*DISTANCE_DEPTH_SCALE*Math.cos(pitch)}}
-function rotatePlatePoint(p,deg=0){const a=deg*Math.PI/180,c=Math.cos(a),s=Math.sin(a),x=p.x-400,y=p.y-400;return{x:400+x*c-y*s,y:400+x*s+y*c}}
-function plateTo3D(p,z=0,deg=0){return project3D(...(()=>{const q=rotatePlatePoint(p,deg);return[q.x-400,q.y-400,z]})())}
+function project3D(x,y,z=0){const yaw=state.viewYaw*Math.PI/180,pitch=state.viewPitch*Math.PI/180,c=Math.cos(yaw),s=Math.sin(yaw),xr=x*c-y*s,yr=x*s+y*c,zr=z*state.depthScale;return{x:400+xr,y:535+yr*Math.cos(pitch)-zr*Math.sin(pitch),depth:yr*Math.sin(pitch)+zr*Math.cos(pitch)}}
+function rotatePlatePoint(p,angle=0){if(!angle)return p;const a=angle*Math.PI/180,c=Math.cos(a),s=Math.sin(a),x=p.x-400,y=p.y-400;return{x:400+x*c-y*s,y:400+x*s+y*c}}
+function plateTo3D(p,z=0,angle=0){const q=rotatePlatePoint(p,angle);return project3D(q.x-400,q.y-400,z)}
 function path3D(points,close=false){return `${points.map((p,i)=>`${i?'L':'M'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join('')}${close?'Z':''}`}
-function curve3D(coords,deg=0){return coords.map(([ra,dec])=>plateTo3D(plateProjection((ra+360)%360,dec),0,deg))}
-function niceAxisMax(distanceLy){if(!isFinite(distanceLy)||distanceLy<=0)return 500;const raw=distanceLy*1.08,pow=Math.pow(10,Math.floor(Math.log10(raw))),m=raw/pow;for(const step of [1,1.5,2,3,5,7.5,10])if(m<=step)return step*pow;return 10*pow}
-function niceTickStep(maxLy){const raw=maxLy/6,pow=Math.pow(10,Math.floor(Math.log10(raw))),m=raw/pow;for(const step of [1,2,2.5,5,10])if(m<=step)return step*pow;return 10*pow}
+function curve3D(coords,angle=0){return coords.map(([ra,dec])=>plateTo3D(plateProjection((ra+360)%360,dec),0,angle))}
 function selectedCatalogIds(){if(state.catalogs.has('all'))return null;const ids=new Set();if(state.catalogs.has('zodiac'))ZODIAC_IDS.forEach(id=>ids.add(id));if(state.catalogs.has('school'))state.constellations.forEach(n=>{const id=SCHOOL_ID_BY_NAME[n];if(id)ids.add(id)});return ids}
 function draw3DPlateLayers(svg){
- const line=(pts,attrs={},close=false)=>svg.append(svgEl('path',{d:path3D(pts,close),fill:'none',...attrs})),loc=locations[state.location],plateAngle=(state.plateRotation+state.compassRotation)%360,windowAngle=(state.windowRotation+state.compassRotation)%360;
- if(state.layers.has('milkyway'))line(curve3D(galacticCoords(),plateAngle),{stroke:'#c7e4ee','stroke-width':18,opacity:.1,'stroke-linecap':'round'});
- if(state.layers.has('equator'))line(curve3D(Array.from({length:181},(_,i)=>[i*2,0]),plateAngle),{stroke:'#e59966','stroke-width':1,'stroke-dasharray':'5 5',opacity:.8});
- if(state.layers.has('ecliptic'))line(curve3D(eclipticCoords(),plateAngle),{stroke:'#f0bf54','stroke-width':1.4,'stroke-dasharray':'2 5',opacity:.95});
- if(state.layers.has('meridian'))line([plateTo3D({x:400,y:70},0,windowAngle),plateTo3D({x:400,y:730},0,windowAngle)],{stroke:'#bf87dc','stroke-width':1,'stroke-dasharray':'7 5',opacity:.8});
- if(state.layers.has('backgroundStars'))background.forEach(s=>{if(!state.mags.has(magBin(s[2])))return;const p=plateTo3D(plateProjection(s[0],s[1]),0,plateAngle);svg.append(svgEl('circle',{cx:p.x,cy:p.y,r:Math.max(.2,1.2-s[2]*.09),fill:'#dbe8ec',opacity:.38}))});
- const ids=selectedCatalogIds(),selected=id=>!ids||ids.has(id);if(state.layers.has('lines')){if(state.lineSource==='oae')Object.entries(IAU_LINES).forEach(([id,parts])=>{if(selected(id))parts.forEach(part=>line(curve3D(part,plateAngle),{stroke:'#73b6d7','stroke-width':.8,opacity:.8}))});else Object.entries(IAU_BOUNDS).forEach(([id,rings])=>{if(selected(id))rings.forEach(r=>line(curve3D(r,plateAngle),{stroke:'#b7cce1','stroke-width':.55,'stroke-dasharray':'3 3',opacity:.8},true))})}
- if(state.layers.has('constellationNames'))IAU_CONSTELLATIONS.forEach(c=>{if(!selected(c.id))return;const p=plateTo3D(plateProjection((c.ra+360)%360,c.dec),0,plateAngle),t=svgEl('text',{x:p.x,y:p.y,fill:'#74c9d5','font-size':state.catalogs.has('all')?4.8:6.5,'text-anchor':'middle',opacity:.85});t.textContent=c.name;svg.append(t)});
- if(state.catalogs.has('school'))Object.entries(groups).forEach(([name,stars])=>{if(!state.constellations.has(name))return;stars.forEach(s=>{if(!state.mags.has(magBin(s[2])))return;const p=plateTo3D(plateProjection(s[0],s[1]),0,plateAngle),fact=STAR_FACTS[s[3]];svg.append(svgEl('circle',{cx:p.x,cy:p.y,r:Math.max(1.5,4-s[2]*.55),fill:fact?.[2]||'#fff3c4',stroke:'#fff','stroke-width':.4}));if(state.layers.has('starNames')&&s[3]){const t=svgEl('text',{x:p.x+5,y:p.y-4,fill:'#dcebf0','font-size':6});t.textContent=s[3];svg.append(t)}})});
- const horizon=horizonWindow(loc),outer=[];for(let a=0;a<=360;a+=4){const r=a*Math.PI/180;outer.push(plateTo3D({x:400+340*Math.cos(r),y:400+340*Math.sin(r)},0,windowAngle))}const hp=horizon.points.map(p=>plateTo3D(p,0,windowAngle));if(state.layers.has('window'))svg.append(svgEl('path',{d:`${path3D(outer,true)} ${path3D(hp,true)}`,fill:'#fff','fill-opacity':.16,'fill-rule':'evenodd',stroke:'#65d1d3','stroke-width':1.2}));
- if(state.layers.has('azimuth')){[30,60].forEach(alt=>{const pts=[];for(let az=0;az<=360;az+=4)pts.push(plateTo3D(horizontalToPlate(alt,az,loc),0,windowAngle));line(pts,{stroke:'#65d1d3','stroke-width':.75,opacity:.8},true);const p=plateTo3D(horizontalToPlate(alt,180,loc),0,windowAngle),t=svgEl('text',{x:p.x+4,y:p.y-3,fill:'#65d1d3','font-size':6});t.textContent=`${alt}°`;svg.append(t)});for(let az=0;az<360;az+=30){const pts=[];for(let alt=0;alt<=90;alt+=4)pts.push(plateTo3D(horizontalToPlate(alt,az,loc),0,windowAngle));line(pts,{stroke:'#65d1d3','stroke-width':az%90===0?1.1:.55,opacity:az%90===0?.85:.45})}[[0,'北'],[90,'東'],[180,'南'],[270,'西']].forEach(([az,n])=>{const p=plateTo3D(horizontalToPlate(0,az,loc),0,windowAngle),t=svgEl('text',{x:p.x,y:p.y-5,fill:'#65d1d3','font-size':8,'font-weight':'bold','text-anchor':'middle'});t.textContent=n;svg.append(t)})}
- if(state.layers.has('dateScale')){const year=state.date.getFullYear(),days=(new Date(year+1,0,1)-new Date(year,0,1))/86400000,months=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];for(let d=0;d<days;d+=5){const a=(d/days*360-90)*Math.PI/180,p=plateTo3D({x:400+337*Math.cos(a),y:400+337*Math.sin(a)},0,plateAngle),q=plateTo3D({x:400+345*Math.cos(a),y:400+345*Math.sin(a)},0,plateAngle);svg.append(svgEl('line',{x1:p.x,y1:p.y,x2:q.x,y2:q.y,stroke:'#dbe8ec','stroke-width':d%10===0?1:.45}))}months.forEach((n,m)=>{const d=(new Date(year,m,1)-new Date(year,0,1))/86400000,a=((d+12)/days*360-90)*Math.PI/180,p=plateTo3D({x:400+344*Math.cos(a),y:400+344*Math.sin(a)},0,plateAngle),t=svgEl('text',{x:p.x,y:p.y,fill:'#dbe8ec','font-size':5.5,'text-anchor':'middle'});t.textContent=n;svg.append(t)})}
- if(state.layers.has('timeScale'))for(let i=0;i<48;i++){const a=(i/48*360-90)*Math.PI/180,p=plateTo3D({x:400+(i%2?329:323)*Math.cos(a),y:400+(i%2?329:323)*Math.sin(a)},0,windowAngle),q=plateTo3D({x:400+337*Math.cos(a),y:400+337*Math.sin(a)},0,windowAngle);svg.append(svgEl('line',{x1:p.x,y1:p.y,x2:q.x,y2:q.y,stroke:'#91aeba','stroke-width':i%2?.45:.9}));if(i%6===0){const l=plateTo3D({x:400+315*Math.cos(a),y:400+315*Math.sin(a)},0,windowAngle),t=svgEl('text',{x:l.x,y:l.y,fill:'#91aeba','font-size':5.5,'text-anchor':'middle'});t.textContent=`${i/2}時`;svg.append(t)}}
+ const line=(pts,attrs={},close=false)=>svg.append(svgEl('path',{d:path3D(pts,close),fill:'none',...attrs})),loc=locations[state.location];
+ if(state.layers.has('milkyway'))line(curve3D(galacticCoords()),{stroke:'#c7e4ee','stroke-width':18,opacity:.1,'stroke-linecap':'round'});
+ if(state.layers.has('equator'))line(curve3D(Array.from({length:181},(_,i)=>[i*2,0])),{stroke:'#e59966','stroke-width':1,'stroke-dasharray':'5 5',opacity:.8});
+ if(state.layers.has('ecliptic'))line(curve3D(eclipticCoords()),{stroke:'#f0bf54','stroke-width':1.4,'stroke-dasharray':'2 5',opacity:.95});
+ if(state.layers.has('meridian'))line([plateTo3D({x:400,y:70}),plateTo3D({x:400,y:730})],{stroke:'#bf87dc','stroke-width':1,'stroke-dasharray':'7 5',opacity:.8});
+ if(state.layers.has('backgroundStars'))background.forEach(s=>{if(!state.mags.has(magBin(s[2])))return;const p=plateTo3D(plateProjection(s[0],s[1]));svg.append(svgEl('circle',{cx:p.x,cy:p.y,r:Math.max(.2,1.2-s[2]*.09),fill:'#dbe8ec',opacity:.38}))});
+ const ids=selectedCatalogIds(),selected=id=>!ids||ids.has(id);if(state.layers.has('lines')){if(state.lineSource==='oae')Object.entries(IAU_LINES).forEach(([id,parts])=>{if(selected(id))parts.forEach(part=>line(curve3D(part),{stroke:'#73b6d7','stroke-width':.8,opacity:.8}))});else Object.entries(IAU_BOUNDS).forEach(([id,rings])=>{if(selected(id))rings.forEach(r=>line(curve3D(r),{stroke:'#b7cce1','stroke-width':.55,'stroke-dasharray':'3 3',opacity:.8},true))})}
+ if(state.layers.has('constellationNames'))IAU_CONSTELLATIONS.forEach(c=>{if(!selected(c.id))return;const p=plateTo3D(plateProjection((c.ra+360)%360,c.dec)),t=svgEl('text',{x:p.x,y:p.y,fill:'#74c9d5','font-size':state.catalogs.has('all')?4.8:6.5,'text-anchor':'middle',opacity:.85});t.textContent=c.name;svg.append(t)});
+ if(state.catalogs.has('school'))Object.entries(groups).forEach(([name,stars])=>{if(!state.constellations.has(name))return;stars.forEach(s=>{if(!state.mags.has(magBin(s[2])))return;const p=plateTo3D(plateProjection(s[0],s[1])),fact=STAR_FACTS[s[3]];svg.append(svgEl('circle',{cx:p.x,cy:p.y,r:Math.max(1.5,4-s[2]*.55),fill:fact?.[2]||'#fff3c4',stroke:'#fff','stroke-width':.4}));if(state.layers.has('starNames')&&s[3]){const t=svgEl('text',{x:p.x+5,y:p.y-4,fill:'#dcebf0','font-size':6});t.textContent=s[3];svg.append(t)}})});
+ const horizon=horizonWindow(loc),outer=[];for(let a=0;a<=360;a+=4){const r=a*Math.PI/180;outer.push(plateTo3D({x:400+340*Math.cos(r),y:400+340*Math.sin(r)}))}const hp=horizon.points.map(p=>plateTo3D(p));if(state.layers.has('window'))svg.append(svgEl('path',{d:`${path3D(outer,true)} ${path3D(hp,true)}`,fill:'#fff','fill-opacity':.16,'fill-rule':'evenodd',stroke:'#65d1d3','stroke-width':1.2}));
+ if(state.layers.has('azimuth')){[30,60].forEach(alt=>{const pts=[];for(let az=0;az<=360;az+=4)pts.push(plateTo3D(horizontalToPlate(alt,az,loc)));line(pts,{stroke:'#65d1d3','stroke-width':.75,opacity:.8},true);const p=plateTo3D(horizontalToPlate(alt,180,loc)),t=svgEl('text',{x:p.x+4,y:p.y-3,fill:'#65d1d3','font-size':6});t.textContent=`${alt}°`;svg.append(t)});for(let az=0;az<360;az+=30){const pts=[];for(let alt=0;alt<=90;alt+=4)pts.push(plateTo3D(horizontalToPlate(alt,az,loc)));line(pts,{stroke:'#65d1d3','stroke-width':az%90===0?1.1:.55,opacity:az%90===0?.85:.45})}[[0,'北'],[90,'東'],[180,'南'],[270,'西']].forEach(([az,n])=>{const p=plateTo3D(horizontalToPlate(0,az,loc)),t=svgEl('text',{x:p.x,y:p.y-5,fill:'#65d1d3','font-size':8,'font-weight':'bold','text-anchor':'middle'});t.textContent=n;svg.append(t)})}
+ if(state.layers.has('dateScale')){const year=state.date.getFullYear(),days=(new Date(year+1,0,1)-new Date(year,0,1))/86400000,months=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];for(let d=0;d<days;d+=5){const a=(d/days*360-90)*Math.PI/180,p=plateTo3D({x:400+337*Math.cos(a),y:400+337*Math.sin(a)}),q=plateTo3D({x:400+345*Math.cos(a),y:400+345*Math.sin(a)});svg.append(svgEl('line',{x1:p.x,y1:p.y,x2:q.x,y2:q.y,stroke:'#dbe8ec','stroke-width':d%10===0?1:.45}))}months.forEach((n,m)=>{const d=(new Date(year,m,1)-new Date(year,0,1))/86400000,a=((d+12)/days*360-90)*Math.PI/180,p=plateTo3D({x:400+344*Math.cos(a),y:400+344*Math.sin(a)}),t=svgEl('text',{x:p.x,y:p.y,fill:'#dbe8ec','font-size':5.5,'text-anchor':'middle'});t.textContent=n;svg.append(t)})}
+ if(state.layers.has('timeScale'))for(let i=0;i<48;i++){const a=(i/48*360-90)*Math.PI/180,p=plateTo3D({x:400+(i%2?329:323)*Math.cos(a),y:400+(i%2?329:323)*Math.sin(a)}),q=plateTo3D({x:400+337*Math.cos(a),y:400+337*Math.sin(a)});svg.append(svgEl('line',{x1:p.x,y1:p.y,x2:q.x,y2:q.y,stroke:'#91aeba','stroke-width':i%2?.45:.9}));if(i%6===0){const l=plateTo3D({x:400+315*Math.cos(a),y:400+315*Math.sin(a)}),t=svgEl('text',{x:l.x,y:l.y,fill:'#91aeba','font-size':5.5,'text-anchor':'middle'});t.textContent=`${i/2}時`;svg.append(t)}}
 }
 function add3DTooltip(svg,p,s,fact){const tip=$('#starTooltip'),hit=svgEl('circle',{cx:p.x,cy:p.y,r:12,fill:'transparent','data-tooltip-hit':'true',style:'cursor:pointer'}),move=e=>{tip.style.left=`${Math.max(8,Math.min(window.innerWidth-190,e.clientX+12))}px`;tip.style.top=`${Math.max(8,e.clientY-82)}px`},show=e=>{tip.innerHTML=`<b>${s[3]}</b>地球からの距離：約${fact[0].toLocaleString('ja-JP')}光年<br>明るさ：${s[2]}等級<br><i style="background:${fact[2]}"></i>星の色：${fact[1]}`;tip.classList.add('show');move(e)};hit.addEventListener('pointerenter',e=>{if(e.pointerType!=='touch')show(e)});hit.addEventListener('pointermove',move);hit.addEventListener('pointerleave',e=>{if(e.pointerType!=='touch')tip.classList.remove('show')});hit.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();show(e)});svg.append(hit)}
 function draw3DScene(svg){
- svg.innerHTML='';svg.style.transform=`scale(${state.zoom})`;svg.classList.add('three-d');const defs=svgEl('defs'),grad=svgEl('radialGradient',{id:'space3d'});grad.append(svgEl('stop',{offset:'0','stop-color':'#163957'}),svgEl('stop',{offset:'1','stop-color':'#050d18'}));defs.append(grad);svg.append(defs,svgEl('rect',{width:800,height:800,fill:'url(#space3d)'}));
- const plateAngle=(state.plateRotation+state.compassRotation)%360;
+ svg.innerHTML='';svg.style.transform=`scale(${state.zoom})`;svg.classList.add('three-d');svg.closest('.chart-wrap')?.classList.add('three-d-active');const defs=svgEl('defs'),grad=svgEl('radialGradient',{id:'space3d'});grad.append(svgEl('stop',{offset:'0','stop-color':'#163957'}),svgEl('stop',{offset:'1','stop-color':'#050d18'}));defs.append(grad);svg.append(defs,svgEl('rect',{width:800,height:800,fill:'url(#space3d)'}));
  const ring=[];for(let a=0;a<=360;a+=4){const r=a*Math.PI/180;ring.push(project3D(345*Math.cos(r),345*Math.sin(r),0))}svg.append(svgEl('path',{d:`M${ring.map(p=>`${p.x.toFixed(1)},${p.y.toFixed(1)}`).join('L')}Z`,fill:'#0b2033','fill-opacity':.9,stroke:'#78909d','stroke-width':2}));
  [115,230,345].forEach(rad=>{const pts=[];for(let a=0;a<=360;a+=6){const r=a*Math.PI/180;pts.push(project3D(rad*Math.cos(r),rad*Math.sin(r),0))}svg.append(svgEl('path',{d:`M${pts.map(p=>`${p.x.toFixed(1)},${p.y.toFixed(1)}`).join('L')}Z`,fill:'none',stroke:'#8ab7ca','stroke-width':.7,opacity:.25}))});for(let a=0;a<360;a+=30){const r=a*Math.PI/180,p=project3D(345*Math.cos(r),345*Math.sin(r),0),q=project3D(0,0,0);svg.append(svgEl('line',{x1:q.x,y1:q.y,x2:p.x,y2:p.y,stroke:'#9cc5d4','stroke-width':.6,opacity:.18}))}draw3DPlateLayers(svg);
- const stars=[];Object.entries(groups).forEach(([name,list])=>{if(!state.constellations.has(name))return;list.forEach(s=>{const fact=STAR_FACTS[s[3]];if(!fact||!state.mags.has(magBin(s[2])))return;const b=plateProjection(s[0],s[1]),base=plateTo3D(b,0,plateAngle);stars.push({s,fact,b,base})})});
- const maxStarDistance=stars.reduce((m,o)=>Math.max(m,o.fact[0]),0),axisMax=stars.some(o=>o.s[3]==='デネブ')?3000:niceAxisMax(maxStarDistance),tick=niceTickStep(axisMax),polaris=rotatePlatePoint(plateProjection(37.95,89.26),plateAngle),axisX=polaris.x-400,axisY=polaris.y-400,axis0=project3D(axisX,axisY,0),axis1=project3D(axisX,axisY,DISTANCE_AXIS_VISUAL_MAX);stars.forEach(o=>{o.top=plateTo3D(o.b,distanceToVisualDepth(o.fact[0],axisMax),plateAngle)});svg.append(svgEl('line',{x1:axis0.x,y1:axis0.y,x2:axis1.x,y2:axis1.y,stroke:'#f5cf68','stroke-width':2}));for(let ly=0;ly<=axisMax+.001;ly+=tick){const p=project3D(axisX,axisY,distanceToVisualDepth(ly,axisMax)),t=svgEl('text',{x:p.x+9,y:p.y+3,fill:'#f5cf68','font-size':7,'font-weight':'bold'});t.textContent=ly===0?'北極星・0光年':`${ly.toLocaleString('ja-JP')}光年`;svg.append(svgEl('line',{x1:p.x-5,y1:p.y,x2:p.x+5,y2:p.y,stroke:'#f5cf68','stroke-width':1}),t)}const title=svgEl('text',{x:axis1.x,y:axis1.y-12,'text-anchor':'middle',fill:'#f5cf68','font-size':9,'font-weight':'bold'});title.textContent='地球からの距離';svg.append(title);
+ const polaris=plateProjection(37.95,89.26),axisX=polaris.x-400,axisY=polaris.y-400,axis0=project3D(axisX,axisY,0),axis1=project3D(axisX,axisY,3000);svg.append(svgEl('line',{x1:axis0.x,y1:axis0.y,x2:axis1.x,y2:axis1.y,stroke:'#f5cf68','stroke-width':2}));for(let ly=0;ly<=3000;ly+=500){const p=project3D(axisX,axisY,ly),t=svgEl('text',{x:p.x+9,y:p.y+3,fill:'#f5cf68','font-size':7,'font-weight':'bold'});t.textContent=ly===0?'北極星・0光年':`${ly.toLocaleString('ja-JP')}光年`;svg.append(svgEl('line',{x1:p.x-5,y1:p.y,x2:p.x+5,y2:p.y,stroke:'#f5cf68','stroke-width':1}),t)}const title=svgEl('text',{x:axis1.x,y:axis1.y-12,'text-anchor':'middle',fill:'#f5cf68','font-size':9,'font-weight':'bold'});title.textContent='地球からの距離';svg.append(title);
+ const stars=[];Object.entries(groups).forEach(([name,list])=>{if(!state.constellations.has(name))return;list.forEach(s=>{const fact=STAR_FACTS[s[3]];if(!fact||!state.mags.has(magBin(s[2])))return;const b=plateProjection(s[0],s[1]),base=project3D(b.x-400,b.y-400,0),top=project3D(b.x-400,b.y-400,fact[0]);stars.push({s,fact,base,top})})});
  stars.forEach(({base,top})=>svg.append(svgEl('line',{x1:base.x,y1:base.y,x2:top.x,y2:top.y,stroke:'#fff','stroke-width':.8,'stroke-dasharray':'2 4',opacity:.7})));stars.sort((a,b)=>a.top.depth-b.top.depth).forEach(({s,fact,base,top})=>{svg.append(svgEl('circle',{cx:base.x,cy:base.y,r:2,fill:'#fff',opacity:.65}),svgEl('circle',{cx:top.x,cy:top.y,r:Math.max(3,7-s[2]*.75),fill:fact[2],stroke:'#fff','stroke-width':1}));if(state.layers.has('starNames')){const t=svgEl('text',{x:top.x+7,y:top.y-5,fill:'#edf6fa','font-size':7});t.textContent=s[3];svg.append(t)}add3DTooltip(svg,top,s,fact)});
- const note=svgEl('text',{x:400,y:775,'text-anchor':'middle',fill:'#a8bac4','font-size':8});note.textContent=`ドラッグ：3D空間を回転・裏返し　／　3Dを裏返すボタン：盤面の表裏を反転　／　距離軸：0〜${axisMax.toLocaleString('ja-JP')}光年`;svg.append(note);$('#viewerTitle').textContent=`${locations[state.location].name}の恒星距離 3D`;$('#interactionHelp').innerHTML=`ドラッグ：3D空間を回転・裏返し　／　ホイール・2本指ピンチ：拡大縮小 <b id="zoomLabel">${Math.round(state.zoom*100)}%</b>`
+ const note=svgEl('text',{x:400,y:775,'text-anchor':'middle',fill:'#a8bac4','font-size':8});note.textContent='母盤のどこでもドラッグ：3D空間を回転　／　ホイール・ピンチ：拡大縮小　／　距離は0〜3,000光年';svg.append(note);$('#viewerTitle').textContent=`${locations[state.location].name}の恒星距離 3D`;$('#interactionHelp').innerHTML=`母盤内・外をドラッグ：3D空間を回転　／　ホイール・2本指ピンチ：拡大縮小 <b id="zoomLabel">${Math.round(state.zoom*100)}%</b>`
 }
 function render(){
- const svg=$('#skyChart'),loc=locations[state.location];if(state.threeD){draw3DScene(svg);return}svg.classList.remove('three-d');$('#interactionHelp').innerHTML=`円盤内：回転盤　／　外側：母盤　／　ホイール・2本指ピンチ：拡大縮小 <b id="zoomLabel">${Math.round(state.zoom*100)}%</b>`;svg.innerHTML='';svg.style.transform=`scale(${state.zoom})`;if($('#zoomLabel'))$('#zoomLabel').textContent=`${Math.round(state.zoom*100)}%`;if($('#lineLegendLabel'))$('#lineLegendLabel').textContent=state.lineSource==='oae'?'OAE星座線':'IAU星座境界';$('#viewerTitle').textContent=`${loc.name}の空`;let visible=0;
+ const svg=$('#skyChart'),loc=locations[state.location];if(state.threeD){draw3DScene(svg);return}svg.classList.remove('three-d');svg.closest('.chart-wrap')?.classList.remove('three-d-active');$('#interactionHelp').innerHTML=`円盤内：回転盤　／　外側：母盤　／　ホイール・2本指ピンチ：拡大縮小 <b id="zoomLabel">${Math.round(state.zoom*100)}%</b>`;svg.innerHTML='';svg.style.transform=`scale(${state.zoom})`;if($('#zoomLabel'))$('#zoomLabel').textContent=`${Math.round(state.zoom*100)}%`;if($('#lineLegendLabel'))$('#lineLegendLabel').textContent=state.lineSource==='oae'?'OAE星座線':'IAU星座境界';$('#viewerTitle').textContent=`${loc.name}の空`;let visible=0;
  const defs=svgEl('defs');const grad=svgEl('radialGradient',{id:'skyGlow'});grad.append(svgEl('stop',{offset:'0','stop-color':'#153854'}),svgEl('stop',{offset:'1','stop-color':'#06101d'}));defs.append(grad);svg.append(defs,svgEl('circle',{cx:400,cy:400,r:348,fill:'url(#skyGlow)',stroke:'#49606f','stroke-width':1}));
  [0,30,60].forEach(dec=>svg.append(svgEl('circle',{cx:400,cy:400,r:(90-dec)/180*345,fill:'none',stroke:'#ffffff12','stroke-dasharray':'3 7'})));
  for(let ra=0;ra<360;ra+=30){const p=plateProjection(ra,-87),q=plateProjection(ra,90);svg.append(svgEl('line',{x1:q.x,y1:q.y,x2:p.x,y2:p.y,stroke:'#ffffff0b'}))}
@@ -388,82 +291,11 @@ function makeLatitudeWindowSVG(){const loc=locations[state.location],s=svgEl('sv
 function makeDatePlateWithDaysSVG(){const doc=new DOMParser().parseFromString(makeDatePlateSVG(),'image/svg+xml'),s=doc.documentElement,year=state.date.getFullYear(),days=(new Date(year+1,0,1)-new Date(year,0,1))/86400000;for(let m=0;m<12;m++){const count=new Date(year,m+1,0).getDate();for(let date=1;date<=count;date++){const d=(new Date(year,m,date)-new Date(year,0,1))/86400000,a=((d+.5)/days*360-90)*Math.PI/180,t=doc.createElementNS(NS,'text');t.setAttribute('x',400+348*Math.cos(a));t.setAttribute('y',402+348*Math.sin(a));t.setAttribute('text-anchor','middle');t.setAttribute('font-size','4.2');t.setAttribute('font-family','sans-serif');t.setAttribute('font-weight','bold');t.setAttribute('fill','#dbe8ec');t.textContent=date;s.append(t)}}return serialize(s)}
 function makePolarWindowSVG(){const loc=locations[state.location],horizon=horizonWindow(loc),s=svgEl('svg',{xmlns:NS,viewBox:'0 0 800 800',width:'210mm',height:'210mm'});s.append(svgEl('rect',{width:800,height:800,fill:'#f7f3e8'}),svgEl('path',{d:`M400 50a350 350 0 1 1 0 700a350 350 0 1 1 0-700Z ${horizon.path}`,fill:'#dcefed','fill-rule':'evenodd',stroke:'#173040','stroke-width':2}),svgEl('path',{d:horizon.path,fill:'none',stroke:'#173040','stroke-width':3,'stroke-dasharray':'8 5'}));for(let hour=0;hour<24;hour++){const a=(hour/24*360-90)*Math.PI/180,r1=hour%3===0?327:333;s.append(svgEl('line',{x1:400+r1*Math.cos(a),y1:400+r1*Math.sin(a),x2:400+348*Math.cos(a),y2:400+348*Math.sin(a),stroke:'#173040','stroke-width':hour%3===0?1.8:.8}));const t=svgEl('text',{x:400+316*Math.cos(a),y:405+316*Math.sin(a),'text-anchor':'middle','font-size':10,'font-family':'sans-serif','font-weight':'bold',fill:'#173040'});t.textContent=`${hour}時`;s.append(t)}const title=svgEl('text',{x:400,y:36,'text-anchor':'middle','font-size':13,'font-family':'sans-serif','font-weight':'bold',fill:'#173040'});title.textContent=`回転窓｜${loc.name} 北緯${loc.lat.toFixed(2)}°｜北極星中心`;s.append(title,svgEl('circle',{cx:400,cy:400,r:5,fill:'#f1b64f'}));return serialize(s)}
 function makePolarWindowWithGridSVG(){const doc=new DOMParser().parseFromString(makePolarWindowSVG(),'image/svg+xml'),s=doc.documentElement,loc=locations[state.location],el=(tag,attrs={})=>{const e=doc.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));return e};[30,60].forEach(alt=>{const pts=[];for(let az=0;az<=360;az+=3)pts.push(horizontalToPlate(alt,az,loc));s.append(el('path',{d:`M${pts.map(p=>`${p.x.toFixed(1)},${p.y.toFixed(1)}`).join('L')}Z`,fill:'none',stroke:'#16766f','stroke-width':1.3}));const p=horizontalToPlate(alt,180,loc),t=el('text',{x:p.x+5,y:p.y-4,fill:'#16766f','font-size':11,'font-weight':'bold'});t.textContent=`${alt}°`;s.append(t)});for(let az=0;az<360;az+=30){const pts=[];for(let alt=0;alt<=90;alt+=3)pts.push(horizontalToPlate(alt,az,loc));s.append(el('path',{d:`M${pts.map(p=>`${p.x.toFixed(1)},${p.y.toFixed(1)}`).join('L')}`,fill:'none',stroke:'#16766f','stroke-width':az%90===0?2:1,opacity:az%90===0?1:.55}));const hp=horizontalToPlate(0,az,loc),zp=horizontalToPlate(90,0,loc),len=Math.hypot(zp.x-hp.x,zp.y-hp.y)||1,t=el('text',{x:hp.x+(zp.x-hp.x)/len*12,y:hp.y+(zp.y-hp.y)/len*12+4,fill:'#16766f','font-size':9,'text-anchor':'middle','font-weight':'bold'});t.textContent=`${az}°`;s.append(t)}const z=horizontalToPlate(90,0,loc),zt=el('text',{x:z.x+7,y:z.y-7,fill:'#16766f','font-size':11,'font-weight':'bold'});zt.textContent='天頂 90°';s.append(zt);return serialize(s)}
-function exportVisibleLayer(kind){const clone=$('#skyChart').cloneNode(true);clone.removeAttribute('style');clone.setAttribute('xmlns',NS);clone.setAttribute('width','210mm');clone.setAttribute('height','210mm');const style=svgEl('style');style.textContent='.dial-time{font:700 6.5px Georgia,serif;fill:#173040}.dial-date{font:700 5px sans-serif;fill:#dbe8ec}.dial-month{font:700 7px sans-serif;fill:#dbe8ec;letter-spacing:.04em}';clone.insertBefore(style,clone.firstChild);clone.querySelectorAll('[data-tooltip-hit],#dialStatus').forEach(n=>n.remove());if(kind==='mother')clone.querySelector('#windowPlate')?.remove();else{clone.querySelector('#starPlateContent')?.remove();clone.querySelector('#motherScale')?.remove()}return serialize(clone)}
+function exportVisibleLayer(kind){const clone=$('#skyChart').cloneNode(true);clone.removeAttribute('style');clone.setAttribute('xmlns',NS);clone.setAttribute('width','210mm');clone.setAttribute('height','210mm');const style=svgEl('style');style.textContent='text{font-family:"Avenir Next","IBM Plex Sans JP",sans-serif}.dial-time{font-size:6.5px;font-weight:700;fill:#173040}.dial-date{font-size:5px;font-weight:700;fill:#dbe8ec}.dial-month{font-size:7px;font-weight:700;fill:#dbe8ec;letter-spacing:.04em}';clone.insertBefore(style,clone.firstChild);clone.querySelectorAll('[data-tooltip-hit],#dialStatus').forEach(n=>n.remove());if(kind==='mother')clone.querySelector('#windowPlate')?.remove();else{clone.querySelector('#starPlateContent')?.remove();clone.querySelector('#motherScale')?.remove()}return serialize(clone)}
 function serialize(s){return `<?xml version="1.0" encoding="UTF-8"?>\n${new XMLSerializer().serializeToString(s)}`}
 function downloadSVG(content,name){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type:'image/svg+xml'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast(`${name} を保存しました`)}
 function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 init();
-
-(function(){
-  const fullBtn=document.getElementById('fullChart');
-  const exitBtn=document.getElementById('exitFullChart');
-  const chartWrap=document.querySelector('.chart-wrap');
-  const skyChart=document.getElementById('skyChart');
-  if(!fullBtn||!exitBtn||!chartWrap||!skyChart)return;
-
-  const nativeFullscreen=!!(chartWrap.requestFullscreen||chartWrap.webkitRequestFullscreen);
-
-  function isNativeFullscreen(){
-    return document.fullscreenElement===chartWrap || document.webkitFullscreenElement===chartWrap;
-  }
-  function isFallbackFullscreen(){
-    return chartWrap.classList.contains('fallback-fullscreen');
-  }
-  function isChartFullscreen(){
-    return isNativeFullscreen() || isFallbackFullscreen();
-  }
-  function redrawSoon(){
-    setTimeout(()=>{ if(typeof render==='function')render(); },80);
-  }
-  function enterFallbackFullscreen(){
-    chartWrap.classList.add('fallback-fullscreen');
-    document.body.classList.add('chart-fallback-fullscreen');
-    updateFullscreenButton();
-    redrawSoon();
-  }
-  function exitFallbackFullscreen(){
-    chartWrap.classList.remove('fallback-fullscreen');
-    document.body.classList.remove('chart-fallback-fullscreen');
-    updateFullscreenButton();
-    redrawSoon();
-  }
-  function enterChartFullscreen(){
-    if(nativeFullscreen){
-      const req=chartWrap.requestFullscreen?chartWrap.requestFullscreen():chartWrap.webkitRequestFullscreen();
-      if(req&&typeof req.catch==='function')req.catch(()=>enterFallbackFullscreen());
-    }else{
-      enterFallbackFullscreen();
-    }
-  }
-  function exitChartFullscreen(){
-    if(isFallbackFullscreen())exitFallbackFullscreen();
-    if(isNativeFullscreen()){
-      if(document.exitFullscreen)document.exitFullscreen();
-      else if(document.webkitExitFullscreen)document.webkitExitFullscreen();
-    }
-  }
-  function updateFullscreenButton(){
-    const active=isChartFullscreen();
-    fullBtn.textContent=active?'全画面を終了':'早見盤を全画面';
-    fullBtn.classList.toggle('active',active);
-    redrawSoon();
-  }
-
-  fullBtn.addEventListener('click',()=>{
-    if(isChartFullscreen())exitChartFullscreen();
-    else enterChartFullscreen();
-  });
-
-  exitBtn.addEventListener('click',()=>{
-    if(isChartFullscreen())exitChartFullscreen();
-  });
-
-  document.addEventListener('fullscreenchange',updateFullscreenButton);
-  document.addEventListener('webkitfullscreenchange',updateFullscreenButton);
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&isFallbackFullscreen())exitFallbackFullscreen()});
-  window.addEventListener('orientationchange',()=>{if(isChartFullscreen())redrawSoon()});
-  window.addEventListener('resize',()=>{if(isChartFullscreen())redrawSoon()});
-})();
 
   </script>
 </body>
