@@ -14,6 +14,8 @@
 .brand{gap:18px}.university-logo{display:block;width:186px;height:auto}.app-identity{padding-left:18px;border-left:1px solid #c9c9c2;white-space:nowrap}footer{align-items:center;gap:30px}footer>div:first-child{display:flex;flex-direction:column;gap:5px}.footer-credit{text-align:right}.footer-credit b,.footer-credit small{display:block}.footer-credit b{font-size:10px;color:#456b2f}.footer-credit small{margin-top:5px;font-size:7px;letter-spacing:.02em}@media(max-width:650px){.university-logo{width:145px}.app-identity{font-size:11px;padding-left:12px}.app-identity small{font-size:6px}.brand{gap:12px}footer{display:flex;flex-direction:column;align-items:flex-start}.footer-credit{text-align:left}}
 /* Typography and 3D presentation */
 html,body,button,input,select,textarea,.hero h1,.viewer-head h2,.download-section h2{font-family:"Avenir Next","IBM Plex Sans JP",sans-serif}svg text,#skyChart text{font-family:"Avenir Next","IBM Plex Sans JP",sans-serif}.brand-mark{font-family:"Avenir Next",sans-serif;font-size:18px}.chart-wrap.three-d-active:after,.chart-wrap.three-d-active .chart-center,.chart-wrap:has(#skyChart.three-d):after,.chart-wrap:has(#skyChart.three-d) .chart-center{display:none!important}
+/* White page and light-gray UI cards */
+:root{--paper:#fff;--card:#f3f4f1}body,.topbar,footer{background:#fff}.topbar{border-bottom-color:#e2e4df}.panel{background:#f3f4f1;border-color:#dfe2dc}.location,.layer-grid label,.mag-check span,.chip,.date-row input{background:#fafbf9}.download-card{background:#f3f4f1;border:1px solid #dde1da}.download-section{background:#f8f9f7}.download-card.accent{background:#e8eee4;color:var(--ink);border-color:#ccd8c5}.download-card.accent small{color:#58704c}
 
 .layer-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .layer-grid label{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid var(--line);background:#fff;border-radius:3px;font-size:10px;cursor:pointer}
@@ -44,6 +46,12 @@ html,body,button,input,select,textarea,.hero h1,.viewer-head h2,.download-sectio
 .chart-wrap:fullscreen #skyChart,.chart-wrap.fallback-fullscreen #skyChart{width:min(100vw,100dvh)!important;height:min(100vw,100dvh)!important;max-width:100%;max-height:100%}
 .chart-wrap:fullscreen .fullscreen-exit,.chart-wrap.fallback-fullscreen .fullscreen-exit{display:block}
 .chart-wrap.fallback-fullscreen{position:fixed!important;inset:0!important;z-index:1000}.chart-wrap:fullscreen:after,.chart-wrap.fallback-fullscreen:after{display:none}.chart-wrap:fullscreen .chart-center,.chart-wrap.fallback-fullscreen .chart-center{z-index:3}body.chart-fallback-fullscreen{overflow:hidden}#fullChart.active{background:#88b260;border-color:#88b260;color:#13261a;font-weight:800}
+
+/* Light page theme overrides */
+body .download-section{background:#f8f9f7}
+body .download-card{background:#f3f4f1;color:var(--ink);border:1px solid #dde1da}
+body .download-card.accent{background:#e8eee4;color:var(--ink);border-color:#ccd8c5}
+body .download-card.accent small{color:#58704c}
 
   </style>
 </head>
